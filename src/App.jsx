@@ -1,142 +1,63 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home'
-import Dashboard from './Pages/Dashboard';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+// 1. IMPORT the actual UI components Member 1 wants to show
+import ToDoForm from './components/ToDoForm';
+import ToDoList from './components/ToDoList';
+import { useEffect } from "react";
+import { getTasks } from "./api";
+
+// 2. ONLY keep the UI-only layout components here (Dashboard, etc.)
+// REMOVE the ones like "const AddTask = ..." because they block the real files.
+
+const Dashboard = () => <h1 className="text-3xl">Dashboard</h1>;
+const Calendar = () => <h1 className="text-3xl">Calendar</h1>;
+const Subjects = () => <h1 className="text-3xl">Subjects</h1>;
+const Statistics = () => <h1 className="text-3xl">Statistics</h1>;
+const Profile = () => <h1 className="text-3xl">Profile</h1>;
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    getTasks().then(data => setTasks(data));
+  }, []);
+
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
+      <div className="flex">
+        {/* Sidebar */}
+        <Navbar />
 
-  );
-}
-export default App;
-// Import Browser Router tools
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom"
+        {/* Main Content Area */}
+        <div className="flex-1 p-10 flex flex-col min-h-screen">
+          <Routes>
+            {/* Home Route */}
+            <Route path="/" element={<Dashboard />} />
 
-// Import Components
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import { GrDashboard } from "react-icons/gr"
-import ToDoForm from './components/ToDoForm'
-// Temporary Placeholder Pages
-// These will later be replaced
-// by your teammates' real pages
+            {/* 3. FIX: Link the route to the REAL ToDoList UI */}
+            <Route path="/tasks" element={<ToDoList tasks={tasks}/>} />
 
-const Dashboard = () => {
-  return <h1 className="text-3xl">Dashboard</h1>
-}
+            {/* 4. FIX: Link the route to the REAL ToDoForm UI */}
+            <Route path="/add-task" element={<ToDoForm tasks={tasks} />} />
 
-const AddTask = () => {
-  return <h1 className="text-3xl">ToDoForm</h1>
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/subjects" element={<Subjects />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
 
-}
-
-
-
-
-
-const Calendar = () => {
-  return <h1 className="text-3xl">Calendar</h1>
-}
-
-const Subjects = () => {
-  return <h1 className="text-3xl">Subjects</h1>
-}
-
-const Statistics = () => {
-  return <h1 className="text-3xl">Statistics</h1>
-}
-
-const Profile = () => {
-  return <h1 className="text-3xl">Profile </h1>
-}
-
-function App() {
-  return (
-    <>
-      {/* React Router Starts */}
-      <BrowserRouter>
-
-        {/* Main Layout */}
-        <div className="flex">
-
-          {/* Sidebar Navbar */}
-          <Navbar />
-
-          {/* Page Content */}
-          <div className="flex-1 p-10 flex flex-col min-h-screen">
-
-            {/* Routes */}
-            <Routes>
-
-              {/* Home Route */}
-              <Route
-                path="/"
-                element={<Dashboard />}
-              />
-
-              {/* Tasks Route */}
-              <Route
-                path="/tasks"
-                element={<ToDoList />}
-              />
-              
-
-              {/* Add Task Route */}
-              <Route
-                path="/add-task"
-                element={<ToDoForm />}
-              />
-
-              {/* Calendar Route */}
-              <Route
-                path="/calendar"
-                element={<Calendar />}
-              />
-
-              {/* Subjects Route */}
-              <Route
-                path="/subjects"
-                element={<Subjects />}
-              />
-
-              {/* Statistics Route */}
-              <Route
-                path="/statistics"
-                element={<Statistics />}
-              />
-
-              {/* Profile Route */}
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-
-            </Routes>
-
-            {/* Footer */}
-            <div className="mt-auto">
+          {/* Footer at the bottom */}
+          <div className="mt-auto">
             <Footer />
-            </div>
-            <div>
-              <ToDoForm/>
-            </div>
-            
-
           </div>
         </div>
-
-      </BrowserRouter>
-    </>
-  )
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
