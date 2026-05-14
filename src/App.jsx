@@ -4,10 +4,16 @@ import {
   Routes,
   Route
 } from "react-router-dom"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Dashboard from "./components/pages/Dashboard";
+import Home from "./components/pages/Home";
+import Calendar from "./components/pages/Calendar";
+import Subjects from "./components/pages/Subjects";
+import Statistics from "./components/pages/Statistics";
+
 
 // 1. IMPORT the actual UI components Member 1 wants to show
 import ToDoForm from './components/ToDoForm';
@@ -18,10 +24,8 @@ import { getTasks } from "./api";
 // 2. ONLY keep the UI-only layout components here (Dashboard, etc.)
 // REMOVE the ones like "const AddTask = ..." because they block the real files.
 
-const Dashboard = () => <h1 className="text-3xl">Dashboard</h1>;
-const Calendar = () => <h1 className="text-3xl">Calendar</h1>;
-const Subjects = () => <h1 className="text-3xl">Subjects</h1>;
-const Statistics = () => <h1 className="text-3xl">Statistics</h1>;
+
+
 const Profile = () => <h1 className="text-3xl">Profile</h1>;
 
 function App() {
@@ -42,7 +46,9 @@ function App() {
         <div className="flex-1 p-10 flex flex-col min-h-screen">
           <Routes>
             {/* Home Route */}
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Home />} />
+            {/* Dashboard Route */}
+            <Route path="/dashboard" element={<Dashboard tasks={tasks} setTasks={setTasks}  />} />
 
             {/* 3. FIX: Link the route to the REAL ToDoList UI */}
             <Route path="/tasks" element={<ToDoList tasks={tasks}/>} />
@@ -52,7 +58,7 @@ function App() {
 
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/subjects" element={<Subjects />} />
-            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/statistics" element={<Statistics tasks={tasks} />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
 
