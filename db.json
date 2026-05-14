@@ -1,171 +1,65 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "taskTitle": "Complete React Logic",
-      "subject": "Software Engineering",
-      "deadlineDate": "2026-05-15",
-      "deadlineTime": "10:00",
-      "priority": "High",
+      "id": "1",
+      "taskNumber": 1,
+      "task": "Complete React project",
+      "status": "Completed",
+      "deadlineDate": "2024-07-01",
+      "deadlineTime": "17:00",
+      "priority": "High"
+    },
+    {
+      "id": "2",
+      "taskNumber": 2,
+      "task": "Study for math exam",
       "status": "Pending",
-      "description": "Ensure the API connects to the UI."
+      "deadlineDate": "2024-07-05",
+      "deadlineTime": "12:00",
+      "priority": "Medium"
     },
     {
-      "taskNumber": "3",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "sdfghj",
-      "id": 2
+      "id": "3",
+      "taskNumber": 3,
+      "task": "Write research paper",
+      "status": "Completed",
+      "deadlineDate": "2024-06-30",
+      "deadlineTime": "23:59",
+      "priority": "High"
     },
     {
-      "taskNumber": "2",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "fgj",
-      "id": 3
+      "id": "4",
+      "taskNumber": 4,
+      "task": "Chemistry",
+      "status": "Pending",
+      "deadlineDate": "2026-05-12",
+      "deadlineTime": "15:33",
+      "priority": "Medium"
     },
     {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "xcvbm",
-      "id": 4
-    },
-    {
-      "taskNumber": "123",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-29",
-      "comments": "azsexrtvyuhni",
-      "id": 5
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-22",
-      "comments": "xrctyvubni",
-      "id": 6
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-23",
-      "comments": "dfghj",
-      "id": 7
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-23",
-      "comments": "sgtyfghjm",
-      "id": 8
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "xcnm",
-      "id": 9
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "cgfghjk",
-      "id": 10
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-08",
-      "comments": "ghj",
-      "id": 11
-    },
-    {
-      "taskNumber": "2",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "fghjk",
-      "id": 12
-    },
-    {
-      "taskNumber": "2",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "comments": "fghjk",
-      "id": 13
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-23",
-      "comments": "ytvuniopl,",
-      "id": 14
-    },
-    {
-      "taskNumber": "2",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "2026-05-07",
-      "priority": "low",
-      "comments": "dffghjk",
-      "id": 15
-    },
-    {
-      "taskNumber": "4",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "",
-      "priority": "low",
-      "comments": "",
-      "deadlineTime": "16:40",
-      "deadlineDate": "2026-05-06",
-      "id": 16
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
+      "taskNumber": "6",
+      "taskName": "",
       "status": "pending",
       "dueDate": "",
       "priority": "medium",
       "comments": "",
-      "deadlineDate": "2026-05-23",
-      "deadlineTime": "16:47",
-      "id": 17
+      "task": "Biology",
+      "deadlineDate": "2026-05-20",
+      "deadlineTime": "00:45",
+      "id": "9SJqbhMVlCA"
     },
     {
-      "taskNumber": "1",
-      "taskName": "Coding",
+      "taskNumber": "7",
+      "taskName": "",
       "status": "pending",
       "dueDate": "",
-      "priority": "low",
+      "priority": "high",
       "comments": "",
-      "deadlineDate": "2026-05-06",
-      "deadlineTime": "17:46",
-      "id": 18
-    },
-    {
-      "taskNumber": "1",
-      "taskName": "Coding",
-      "status": "pending",
-      "dueDate": "",
-      "priority": "low",
-      "comments": "",
-      "deadlineDate": "2026-05-23",
-      "deadlineTime": "16:02",
-      "id": 19
+      "task": "ENGLISH",
+      "deadlineDate": "2026-05-13",
+      "deadlineTime": "03:06",
+      "id": "our7yZrEdNQ"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

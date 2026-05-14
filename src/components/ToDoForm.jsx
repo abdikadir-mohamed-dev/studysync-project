@@ -25,7 +25,7 @@ function handleSubmit(e) {
         // 2. Clear the form ONLY after the save is successful
         setTask({
             taskNumber: '',
-            taskTitle: '',
+            task: '',
             status: '',
             deadlineDate: '',
             deadlineTime: '',
@@ -45,8 +45,8 @@ function handleSubmit(e) {
             <label htmlFor="taskNumber">Task Number:</label>
             <input className="border outline-violet-800 rounded-md p-2 w-full" type="number" value={task.taskNumber} id='taskNumber'onChange={(e)=>setTask({...task,taskNumber:e.target.value})}required/>
 
-            <label htmlFor="task">Task</label>
-            <input className="border outline-violet-800 rounded-md p-2 w-full" type="text" value={task.taskName} id='task'onChange={(e)=>setTask({...task,taskName:e.target.value})}required/>
+            <label htmlFor="task">task</label>
+            <input className="border outline-violet-800 rounded-md p-2 w-full" type="text" value={task.task} id="task"onChange={(e)=>setTask({...task,task:e.target.value})}required/>
             <label htmlFor="status">Status</label>
             <input className="border outline-violet-800 rounded-md p-2 w-full" 
  type="text" value={task.status} id='status'onChange={(e)=>setTask({...task,status:e.target.value})}required/>

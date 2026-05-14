@@ -27,7 +27,7 @@ function ToDoList({ tasks }) {
             <table className="w-full border-collapse">
                 <thead>
                     <tr>
-                        <th className='text-left border-b p-4 font-bold'>Task</th>
+                        <th className='text-left border-b p-4 font-bold'>task</th>
                         <th className='text-left border-b p-4 font-bold'>Status</th>
                         <th className='text-left border-b p-4 font-bold'>Due Date</th>
                         <th className='text-left border-b p-4 font-bold'>Priority</th>
@@ -39,7 +39,7 @@ function ToDoList({ tasks }) {
                     {(tasks || []).map((task) => (
                         <tr key={task.id}>
                             {/* 3. Use taskTitle instead of taskName to match your JSON file */}
-                            <td className='border-b p-4'>{task.taskTitle}</td>
+                            <td className='border-b p-4'>{task.task}</td>
                             <td className='border-b p-4'>
                                 <span className="capitalize">{task.status}</span>
                             </td>
