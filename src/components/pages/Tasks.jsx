@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { getTasks, deleteTask } from './api';
+import { getTasks, deleteTask } from '../../api';
 // 1. IMPORT the ToDoList component (adjust path if needed)
-import ToDoList from '../components/ToDoList'; 
+import ToDoList from '../ToDoList'; 
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([]);
@@ -13,7 +13,7 @@ const Tasks = () => {
 
     const filteredTasks = tasks.filter(task => 
         // Ensure this matches your db.json key (taskTitle)
-        task.taskTitle?.toLowerCase().includes(searchTerm.toLowerCase())
+        task.task?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const handleDelete = (id) => {
@@ -41,7 +41,7 @@ const Tasks = () => {
                   2. RENDER the ToDoList component and pass the filtered tasks.
                   Make sure the prop name 'tasks' matches what we wrote in ToDoList.jsx
                 */}
-                <ToDoList tasks={tasks} onDelete={handleDelete} />
+                <ToDoList tasks={filteredTasks} setTasks={setTasks} />
             </div>
         </div>
     );
