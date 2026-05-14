@@ -4,123 +4,67 @@ import {
   Routes,
   Route
 } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-// Import Components
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import { GrDashboard } from "react-icons/gr"
-import ToDoForm from './components/ToDoForm'
-// Temporary Placeholder Pages
-// These will later be replaced
-// by your teammates' real pages
+// 1. IMPORT the actual UI components Member 1 wants to show
+import ToDoForm from './components/ToDoForm';
+import ToDoList from './components/ToDoList';
+import { useEffect } from "react";
+import { getTasks } from "./api";
 
-const Dashboard = () => {
-  return <h1 className="text-3xl">Dashboard</h1>
-}
+// 2. ONLY keep the UI-only layout components here (Dashboard, etc.)
+// REMOVE the ones like "const AddTask = ..." because they block the real files.
 
-const AddTask = () => {
-  return <h1 className="text-3xl">ToDoForm</h1>
-
-}
-
-
-
-
-
-const Calendar = () => {
-  return <h1 className="text-3xl">Calendar</h1>
-}
-
-const Subjects = () => {
-  return <h1 className="text-3xl">Subjects</h1>
-}
-
-const Statistics = () => {
-  return <h1 className="text-3xl">Statistics</h1>
-}
-
-const Profile = () => {
-  return <h1 className="text-3xl">Profile </h1>
-}
+const Dashboard = () => <h1 className="text-3xl">Dashboard</h1>;
+const Calendar = () => <h1 className="text-3xl">Calendar</h1>;
+const Subjects = () => <h1 className="text-3xl">Subjects</h1>;
+const Statistics = () => <h1 className="text-3xl">Statistics</h1>;
+const Profile = () => <h1 className="text-3xl">Profile</h1>;
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    getTasks().then(data => setTasks(data));
+  }, []);
+
+
   return (
-    <>
-      {/* React Router Starts */}
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="flex">
+        {/* Sidebar */}
+        <Navbar />
 
-        {/* Main Layout */}
-        <div className="flex">
+        {/* Main Content Area */}
+        <div className="flex-1 p-10 flex flex-col min-h-screen">
+          <Routes>
+            {/* Home Route */}
+            <Route path="/" element={<Dashboard />} />
 
-          {/* Sidebar Navbar */}
-          <Navbar />
+            {/* 3. FIX: Link the route to the REAL ToDoList UI */}
+            <Route path="/tasks" element={<ToDoList tasks={tasks}/>} />
 
-          {/* Page Content */}
-          <div className="flex-1 p-10 flex flex-col min-h-screen">
+            {/* 4. FIX: Link the route to the REAL ToDoForm UI */}
+            <Route path="/add-task" element={<ToDoForm tasks={tasks} />} />
 
-            {/* Routes */}
-            <Routes>
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/subjects" element={<Subjects />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
 
-              {/* Home Route */}
-              <Route
-                path="/"
-                element={<Dashboard />}
-              />
-
-              {/* Tasks Route */}
-              <Route
-                path="/tasks"
-                element={<ToDoList />}
-              />
-              
-
-              {/* Add Task Route */}
-              <Route
-                path="/add-task"
-                element={<ToDoForm />}
-              />
-
-              {/* Calendar Route */}
-              <Route
-                path="/calendar"
-                element={<Calendar />}
-              />
-
-              {/* Subjects Route */}
-              <Route
-                path="/subjects"
-                element={<Subjects />}
-              />
-
-              {/* Statistics Route */}
-              <Route
-                path="/statistics"
-                element={<Statistics />}
-              />
-
-              {/* Profile Route */}
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-
-            </Routes>
-
-            {/* Footer */}
-            <div className="mt-auto">
+          {/* Footer at the bottom */}
+          <div className="mt-auto">
             <Footer />
-            </div>
-            <div>
-              <ToDoForm/>
-            </div>
-            
-
           </div>
         </div>
-
-      </BrowserRouter>
-    </>
-  )
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+
+export default App;
