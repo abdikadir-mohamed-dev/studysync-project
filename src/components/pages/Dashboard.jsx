@@ -3,6 +3,9 @@ import Search from './Search';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import woman from "../../assets/woman.webp"
+import todopng from "../../assets/todo.png"
+import checkpng from "../../assets/check.png"
+import spinnerpng from "../../assets/spinner-of-dots.png"
 // import Name from './Name';
 
 function Dashboard({ tasks, setTasks }) {
