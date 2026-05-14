@@ -1,16 +1,23 @@
 import React from 'react'
 import { Pencil, Trash } from 'lucide-react'
 
-// 1. Fixed prop name to match the 'tasks' variable you are passing from Tasks.jsx
-function ToDoList({ tasks }) { 
+function ToDoList({ tasks, setTasks }) {
 
     function handleDelete(id) {
-        // You should pass task.id here later to call your API delete function
-        console.log('Deleting task with ID:', id)
+        const updatedTasks = tasks.filter(task => task.id !== id)
+        setTasks(updatedTasks)
     }
 
     function handleEdit(id) {
-        console.log('Editing task with ID:', id)
+        const updatedTask = prompt("Edit your task")
+        if (updatedTask) {
+            const editedTasks = tasks.map(task =>
+                task.id === id
+                ? { ...task, task: updatedTask }
+                : task
+            )
+            setTasks(editedTasks)
+        }
     }
 
     const isOverdue = (dueDateString) => {
@@ -27,7 +34,7 @@ function ToDoList({ tasks }) {
             <table className="w-full border-collapse">
                 <thead>
                     <tr>
-                        <th className='text-left border-b p-4 font-bold'>task</th>
+                        <th className='text-left border-b p-4 font-bold'>Task</th>
                         <th className='text-left border-b p-4 font-bold'>Status</th>
                         <th className='text-left border-b p-4 font-bold'>Due Date</th>
                         <th className='text-left border-b p-4 font-bold'>Priority</th>
@@ -35,10 +42,8 @@ function ToDoList({ tasks }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* 2. Changed taskList to tasks and updated keys to match db.json */}
                     {(tasks || []).map((task) => (
                         <tr key={task.id}>
-                            {/* 3. Use taskTitle instead of taskName to match your JSON file */}
                             <td className='border-b p-4'>{task.task}</td>
                             <td className='border-b p-4'>
                                 <span className="capitalize">{task.status}</span>
@@ -49,15 +54,15 @@ function ToDoList({ tasks }) {
                             <td className='border-b p-4'>{task.priority}</td>
                             <td className='border-b p-4'>
                                 <div className='flex gap-2'>
-                                    <button 
-                                        type='button' 
+                                    <button
+                                        type='button'
                                         className='p-2 hover:bg-gray-400 rounded-full transition-colors'
                                         onClick={() => handleEdit(task.id)}
                                     >
                                         <Pencil size={20}/>
                                     </button>
-                                    <button 
-                                        type='button' 
+                                    <button
+                                        type='button'
                                         className='p-2 hover:bg-red-200 text-red-600 rounded-full transition-colors'
                                         onClick={() => handleDelete(task.id)}
                                     >

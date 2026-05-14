@@ -13,6 +13,7 @@ import Home from "./components/pages/Home";
 import Calendar from "./components/pages/Calendar";
 import Subjects from "./components/pages/Subjects";
 import Statistics from "./components/pages/Statistics";
+import Tasks from "./components/pages/Tasks";
 
 
 // 1. IMPORT the actual UI components Member 1 wants to show
@@ -51,7 +52,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard tasks={tasks} setTasks={setTasks}  />} />
 
             {/* 3. FIX: Link the route to the REAL ToDoList UI */}
-            <Route path="/tasks" element={<ToDoList tasks={tasks}/>} />
+            <Route path="/tasks" element={<Tasks />} />
 
             {/* 4. FIX: Link the route to the REAL ToDoForm UI */}
             <Route path="/add-task" element={<ToDoForm tasks={tasks} />} />
